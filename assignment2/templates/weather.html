@@ -94,7 +94,7 @@
     <div class="weather-charts-toggle" style="display: none;">
         <div class="details-title">Weather Charts</div>
         <button id="toggleChartsBtn" class="arrow-down">
-            <img id="toggleIcon" src="{{ url_for('static', filename='Images/point-down-512.png') }}" alt="Down Arrow" width="24px" height="24px">
+            <img id="toggleIcon" src=“/static/Images/point-down-512.png” alt="Down Arrow" width="24px" height="24px">
         </button>
     </div>
     
@@ -253,32 +253,32 @@
                                 <div class="weather-details">
                                     <div>
                                         <p>Humidity</p>
-                                        <img src="{{ url_for('static', filename='Images/humidity.png') }}" alt="none" style="width: 40px; height: 40px;"/>
+                                        <img src="/static/Images/humidity.png" alt="none" style="width: 40px; height: 40px;"/>
                                         <p>${weather.humidity}%</p>
                                     </div>
                                     <div>
                                         <p>Pressure</p>
-                                        <img src="{{ url_for('static', filename='Images/Pressure.png') }}" alt="none" style="width: 40px; height: 40px;"/>
+                                        <img src="/static/Images/Pressure.png" alt="none" style="width: 40px; height: 40px;"/>
                                         <p>${weather.pressureSeaLevel} inHg</p>
                                     </div>
                                     <div>
                                         <p>Wind Speed</p>
-                                        <img src="{{ url_for('static', filename='Images/Wind_Speed.png') }}" alt="none" style="width: 40px; height: 40px;"/>
+                                        <img src="/static/Images/Wind_Speed.png" alt="none" style="width: 40px; height: 40px;"/>
                                         <p>${weather.windSpeed} mph</p>
                                     </div>
                                     <div>
                                         <p>Visibility</p>
-                                        <img src="{{ url_for('static', filename='Images/Visibility.png') }}" alt="none" style="width: 40px; height: 40px;"/>
+                                        <img src="static/Images/Visibility.png" alt="none" style="width: 40px; height: 40px;"/>
                                         <p>${weather.visibility} mi</p>
                                     </div>
                                     <div>
                                         <p>Cloud Cover</p>
-                                        <img src="{{ url_for('static', filename='Images/Cloud_Cover.png') }}" alt="none" style="width: 40px; height: 40px;"/>
+                                        <img src="static/Images/Cloud_Cover.png" alt="none" style="width: 40px; height: 40px;"/>
                                         <p>${weather.cloudCover}%</p>
                                     </div>
                                     <div>
                                         <p>UV Level</p>
-                                        <img src="{{ url_for('static', filename='Images/UV_Level.png') }}" alt="none" style="width: 40px; height: 40px;"/>
+                                        <img src="/static/Images/UV_Level.png" alt="none" style="width: 40px; height: 40px;"/>
                                         <p>${weather.uvIndex}</p>
                                     </div>
                                 </div>
@@ -354,7 +354,7 @@
 
                 $.get(url, function(data) {
                     console.log('Detailed Weather data:', data);
-
+                    $('#toggleIcon').attr('src', 'static/Images/point-down-512.png');
                     if (data && data.data) {
                         const weather = data.data.timelines[0].intervals[idx].values;
                         const date = data.data.timelines[0].intervals[idx].startTime;
@@ -455,8 +455,8 @@
                             </div>`;
 
                         $('.result-area').html(detailed_weather_card);
-                        $('.weather-charts-toggle').show();
                     }
+                    $('.weather-charts-toggle').show();
                 });
             }
 
